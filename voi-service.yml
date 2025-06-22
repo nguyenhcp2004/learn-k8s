@@ -12,7 +12,7 @@ spec:
   # ít xài, dùng để test chủ yếu (tìm hiều thêm)
   # type: NodePort
   selector:
-    app: postgres
+    app: postgresql
   ports:
     - protocol: TCP
       port: 5432 # Port bên ngoài (client gọi vào)

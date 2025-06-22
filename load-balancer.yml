@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  # traffic đổ vào backend thì nó sẽ tìm đến các Pod có label app: cuong-server
-  name: cuong-server-service
-  namespace: cuong
+  # traffic đổ vào backend thì nó sẽ tìm đến các Pod có label app: nguyen-server
+  name: nguyen-server-service
+  namespace: nguyen
 spec:
   # LoadBalancer sẽ tạo ra một IP bên ngoài để client có thể truy cập vào dịch vụ này
   type: LoadBalancer
@@ -12,7 +12,7 @@ spec:
   # ít xài, dùng để test chủ yếu (tim hiểu thêm)
   # type: NodePort
   selector:
-    app: cuong-server
+    app: nguyen-server
   ports:
     - protocol: TCP
       port: 3000 # Port bên ngoài (client gọi vào)
