@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nguyen-server-deployment
+  namespace: nguyen
+  labels:
+    app: nguyen-server
+spec:
+  # bản sao là 3
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nguyen-server
+  template:
+    metadata:
+      labels:
+        app: nguyen-server
+    spec:
+      containers:
+        - name: test-deploy-server
+          image: cifarm/test_deploy-server:latest
+          ports:
+            - containerPort: 3000

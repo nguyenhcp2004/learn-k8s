@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # traffic đổ vào backend thì nó sẽ tìm đến các Pod có label app: cuong-server
+  name: voi-service
+  namespace: nguyen
+spec:
+  # LoadBalancer sẽ tạo ra một IP bên ngoài để client có thể truy cập vào dịch vụ này
+  #type: LoadBalancer
+  # Loại dịch vụ để các service giao tiếp nội bộ với nhau (không ra ngoài)
+  type: ClusterIP
+  # ít xài, dùng để test chủ yếu (tìm hiều thêm)
+  # type: NodePort
+  selector:
+    app: postgres
+  ports:
+    - protocol: TCP
+      port: 5432 # Port bên ngoài (client gọi vào)
+      targetPort: 5432 # Port bên trong container

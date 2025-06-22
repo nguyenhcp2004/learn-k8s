@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  namespace: nguyen
+  labels:
+    app: nguyen-server
+spec:
+  containers:
+    - name: 'test-deploy-server'
+      image: 'cifarm/test_deploy-server:latest'
+      ports:
+        - containerPort: 3000
