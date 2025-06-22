@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgresql
+  namespace: nguyen
+  labels:
+    app: postgresql
+spec:
+  containers:
+    - name: postgresql
+      image: postgres:16
+      ports:
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_USER
+          value: 'postgres'
+        - name: POSTGRES_PASSWORD
+          value: 'postgres'
+        - name: POSTGRES_DB
+          value: 'mydb'
+      volumeMounts:
+        - name: pgdata
+          mountPath: /var/lib/postgresql/data
+  volumes:
+    - name: pgdata
+      emptyDir: {}
